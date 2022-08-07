@@ -12,7 +12,6 @@ const routes: Routes = [
   {
     path: 'site',
     loadChildren: () => import(`./site/site.module`).then((m) => m.SiteModule),
-    canActivate: [AuthGuard],
   },
   {
     path: 'admin',
@@ -22,7 +21,7 @@ const routes: Routes = [
   },
   { path: '404', component: Error404Component },
   { path: '500', component: Error500Component },
-  { path: '**', redirectTo: 'auth', pathMatch: 'full' },
+  { path: '**', redirectTo: 'site', pathMatch: 'full' },
 ];
 
 @NgModule({

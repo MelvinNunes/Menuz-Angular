@@ -1,60 +1,35 @@
-<!-- Mobile -->
-<nav class="mobile">
-  <div class="topbar">
-    <div class="mainbar">
-      <img class="treedot" src="" alt="treedot" />
-      <img class="logo" src="../../../assets/logo.png" alt="logo" />
-      <div class="cart">
-        <p class="cartquantity">2</p>
-        <img class="cartimage" src="" alt="cartimage" />
-      </div>
-    </div>
-    <div class="subbar">
-      <input
-        class="searchbaritem"
-        type="search"
-        name="searchbar"
-        placeholder="Pesquisar marcas, items..."
-      />
-      <img src="" alt="searchsign" />
-    </div>
-  </div>
-  <div class="bottombar"></div>
-</nav>
-
 <!-- Web -->
-<nav class="web">
-  <img class="logoimage" src="../../../assets/logo.png" alt="logo" />
-  <div class="navbaroption">
+<nav class="flex justify-center items-center my-6 gap-24">
+  <img class="w-20" src="../../../assets/logo2.png" alt="logo" />
+  <div class="flex justify-center items-center gap-16">
     <div>
-      <ul class="navigationitems">
-        <li><a routerLink="/site/home">Inicial</a></li>
-        <li><a routerLink="/site/products">Productos</a></li>
-        <li><a href="">Inicial</a></li>
-        <li><a href="">Inicial</a></li>
+      <ul class="flex gap-10">
+        <li><a routerLink="/site/home" class="links">Início</a></li>
+        <li><a routerLink="/site/products" class="links">Ver Menus</a></li>
+        <li><a routerLink="/site" class="links">Meus Menus</a></li>
       </ul>
     </div>
-    <div class="searchbarweb">
+    <div class="">
       <input
-        class="searchbarwebin"
-        type="search"
-        placeholder="Pesquisar marcas, items..."
+        class="relative bg-gray-200 rounded-lg px-2 py-2 w-64"
+        type=""
+        placeholder="Pesquisar menus..."
       />
       <svg
-        viewBox="0 0 32 32"
-        xml:space="preserve"
+        fill="none"
+        class="absolute w-9 top-10 cursor-pointer botaosearch"
+        viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
-        class="searchbutton"
       >
         <path
-          d="m27.414 24.586-5.077-5.077A9.932 9.932 0 0 0 24 14c0-5.514-4.486-10-10-10S4 8.486 4 14s4.486 10 10 10a9.932 9.932 0 0 0 5.509-1.663l5.077 5.077a2 2 0 1 0 2.828-2.828zM7 14c0-3.86 3.14-7 7-7s7 3.14 7 7-3.14 7-7 7-7-3.14-7-7z"
-          fill="#7fcbff"
-          class="fill-000000"
+          d="M10 2.75a7.25 7.25 0 0 1 5.63 11.819l4.9 4.9a.75.75 0 0 1-.976 1.134l-.084-.073-4.901-4.9A7.25 7.25 0 1 1 10 2.75Zm0 1.5a5.75 5.75 0 1 0 0 11.5 5.75 5.75 0 0 0 0-11.5Z"
+          fill="#ff4000"
+          class="fill-212121"
         ></path>
       </svg>
     </div>
   </div>
-  <div class="credentials">
+  <div class="hidden md:flex gap-4">
     <button (click)="toLogin()" class="button loginbutton">Entrar</button>
     <button routerLink="/site/logon" class="button logupbutton">Criar</button>
   </div>
