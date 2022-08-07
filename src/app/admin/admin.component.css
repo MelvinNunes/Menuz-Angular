@@ -1,0 +1,12 @@
+.content {
+    overflow-y: hidden;
+    padding: 4em 0em ;
+}
+@media (min-width: 1024px) {
+    .content {
+        position: relative;
+        padding: 4em 15em ;
+        left: 0px;
+    }
+}
+
