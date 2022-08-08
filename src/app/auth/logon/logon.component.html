@@ -1,1 +1,121 @@
-<p>logon works!</p>
+<div class="flex flex-col overflow-x-hidden h-full my-4">
+  <div class="flex justify-center items-center p-2 overflow-hidden py-8">
+    <div class="box">
+      <div class="logo">
+        <img class="logoimage" src="../../../assets/logo.png" alt="logo" />
+      </div>
+      <div class="logincredentials">
+        <div>
+          <form [formGroup]="form">
+            <!-- Name -->
+            <h1 class=""><span class="text-red-500">*</span>Nome</h1>
+            <input
+              class="inputshadow"
+              formControlName="name"
+              type="text"
+              placeholder="Nome"
+            />
+            <!-- Caso Haja Erros no Name -->
+            <div *ngIf="form.controls['name'].errors" style="padding-top: 10px">
+              <div
+                *ngIf="!form.controls['name'].errors?.['required']"
+                style="font-size: 11.5px"
+              >
+                <p style="color: red">O campo do nome é obrigatório.</p>
+              </div>
+              <div
+                *ngIf="!form.controls['name'].errors?.['minLength']"
+                style="font-size: 11.5px"
+              >
+                <p style="color: red">
+                  Por favor introduza um nome com 2 ou mais caractéres.
+                </p>
+              </div>
+            </div>
+            <!-- Apelido -->
+            <h1>Apelido</h1>
+            <input
+              class="inputshadow"
+              formControlName="surname"
+              type="text"
+              placeholder="Apelido"
+            />
+            <!-- User -->
+            <h1><span class="text-red-500">*</span>Usuário</h1>
+            <input
+              class="inputshadow"
+              formControlName="username"
+              type="email"
+              placeholder="Email de usuário"
+            />
+            <!-- Caso Haja Erros no Usuario -->
+            <div
+              *ngIf="
+                form.controls['username'].errors &&
+                !form.controls['username'].pristine
+              "
+              style="padding-top: 10px"
+            >
+              <div
+                *ngIf="!form.controls['username'].errors?.['required']"
+                style="font-size: 11.5px"
+              >
+                <p style="color: red">O campo do e-mail é obrigatório.</p>
+              </div>
+              <div
+                *ngIf="!form.controls['username'].errors?.['patternInvalid']"
+                style="font-size: 11.5px"
+              >
+                <p style="color: red">
+                  Por favor introduza um endereço de e-mail válido.
+                </p>
+              </div>
+            </div>
+            <!-- Password -->
+            <h1><span class="text-red-500">*</span>Password</h1>
+            <input
+              formControlName="password"
+              type="password"
+              placeholder="Password"
+              class="inputshadow"
+            />
+            <!-- Caso Erro na Password -->
+            <div
+              *ngIf="
+                !form.controls['password'].errors &&
+                !form.controls['password'].pristine
+              "
+              style="padding-top: 10px"
+            >
+              <div
+                *ngIf="form.controls['password'].errors?.['required']"
+                style="font-size: 11.5px"
+              >
+                <p style="color: red">
+                  Por favor introduza a senha do utilizador.
+                </p>
+              </div>
+              <div
+                *ngIf="form.controls['password'].errors?.['required'] || form.controls['password'].errors?.['minlength']"
+                style="font-size: 11.5px"
+              >
+                <p style="color: red">
+                  A Senha deve ter 4 caracteres no mínimo.
+                </p>
+              </div>
+            </div>
+
+            <!-- Erro na verificação -->
+            <p class="erro"></p>
+          </form>
+        </div>
+      </div>
+      <p class="text-red-500">*Obrigatório</p>
+      <div class="botaolog">
+        <button class="botaologin" [disabled]="form.invalid" (click)="logon()">
+          Criar Conta
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,99 +1,106 @@
-<div class="conteiner">
-  <div class="box">
-    <div class="logo">
-      <img class="logoimage" src="../../../assets/logo.png" alt="logo" />
-    </div>
-    <div class="logincredentials">
-      <div>
-        <form [formGroup]="form">
-          <!-- User -->
-          <h1>Usuário</h1>
-          <input
-            class="inputshadow"
-            formControlName="email"
-            type="email"
-            placeholder="Email de usuário"
-          />
-          <!-- Caso Haja Erros no Email -->
-          <div
-            *ngIf="
-              form.controls['email'].errors && !form.controls['email'].pristine
-            "
-            style="padding-top: 10px"
-          >
+<div class="flex flex-col overflow-x-hidden h-full my-4">
+  <div class="flex justify-center items-center p-2 overflow-hidden py-8">
+    <div class="box">
+      <div class="logo">
+        <img class="logoimage" src="../../../assets/logo.png" alt="logo" />
+      </div>
+      <div class="logincredentials">
+        <div>
+          <form [formGroup]="form">
+            <!-- User -->
+            <h1>Usuário</h1>
+            <input
+              class="inputshadow"
+              formControlName="email"
+              type="email"
+              placeholder="Email de usuário"
+            />
+            <!-- Caso Haja Erros no Email -->
             <div
-              *ngIf="!form.controls['email'].errors?.['required']"
-              style="font-size: 11.5px"
+              *ngIf="
+                form.controls['email'].errors &&
+                !form.controls['email'].pristine
+              "
+              style="padding-top: 10px"
             >
-              <p style="color: red">O campo do e-mail é obrigatório.</p>
+              <div
+                *ngIf="!form.controls['email'].errors?.['required']"
+                style="font-size: 11.5px"
+              >
+                <p style="color: red">O campo do e-mail é obrigatório.</p>
+              </div>
+              <div
+                *ngIf="!form.controls['email'].errors?.['patternInvalid']"
+                style="font-size: 11.5px"
+              >
+                <p style="color: red">
+                  Por favor introduza um enderreço de e-mail válido.
+                </p>
+              </div>
             </div>
+            <!-- Password -->
+            <h1>Password</h1>
+            <input
+              formControlName="password"
+              type="password"
+              placeholder="Password"
+              class="inputshadow"
+            />
+            <!-- Caso Erro na Password -->
             <div
-              *ngIf="!form.controls['email'].errors?.['patternInvalid']"
-              style="font-size: 11.5px"
+              *ngIf="
+                !form.controls['password'].errors &&
+                !form.controls['password'].pristine
+              "
+              style="padding-top: 10px"
             >
-              <p style="color: red">
-                Por favor introduza um enderreço de e-mail válido.
-              </p>
+              <div
+                *ngIf="form.controls['password'].errors?.['required']"
+                style="font-size: 11.5px"
+              >
+                <p style="color: red">
+                  Por favor introduza a senha do utilizador.
+                </p>
+              </div>
+              <div
+                *ngIf="form.controls['password'].errors?.['required'] || form.controls['password'].errors?.['minlength']"
+                style="font-size: 11.5px"
+              >
+                <p style="color: red">
+                  A Senha deve ter 4 caracteres no mínimo.
+                </p>
+              </div>
             </div>
-          </div>
-          <!-- Password -->
-          <h1>Password</h1>
-          <input
-            formControlName="password"
-            type="password"
-            placeholder="Password"
-            class="inputshadow"
-          />
-          <!-- Caso Erro na Password -->
-          <div
-            *ngIf="
-              !form.controls['password'].errors &&
-              !form.controls['password'].pristine
-            "
-            style="padding-top: 10px"
-          >
-            <div
-              *ngIf="form.controls['password'].errors?.['required']"
-              style="font-size: 11.5px"
-            >
-              <p style="color: red">
-                Por favor introduza a senha do utilizador.
-              </p>
+            <div class="checker">
+              <label>
+                <input
+                  formControlName="remember_token"
+                  type="checkbox"
+                  value="remember-me"
+                />
+                Lembrar-me
+              </label>
             </div>
-            <div
-              *ngIf="form.controls['password'].errors?.['required'] || form.controls['password'].errors?.['minlength']"
-              style="font-size: 11.5px"
-            >
-              <p style="color: red">A Senha deve ter 8 caracteres no mínimo.</p>
-            </div>
-          </div>
-          <div class="checker">
-            <label>
-              <input
-                formControlName="remember_token"
-                type="checkbox"
-                value="remember-me"
-              />
-              Lembrar-me
-            </label>
-          </div>
-          <!-- Erro na verificação -->
-          <p class="erro"></p>
-        </form>
+            <!-- Erro na verificação -->
+            <p *ngIf="error.err" class="text-red-600" style="font-size: 11.5px">
+              {{ error.message }}
+            </p>
+          </form>
+        </div>
+      </div>
+      <div class="botaolog">
+        <button class="botaologin" [disabled]="form.invalid" (click)="login()">
+          Entrar
+        </button>
+      </div>
+      <div class="newacc">
+        <p>Não possui uma conta?</p>
+        <a routerLink="/auth/logon">Criar</a>
       </div>
     </div>
-    <div class="botaolog">
-      <button class="botaologin" [disabled]="form.invalid" (click)="login()">
-        Entrar
-      </button>
-    </div>
-    <div class="newacc">
-      <p>Não possui uma conta?</p>
-      <a routerLink="/createaccount">Criar</a>
-    </div>
   </div>
-</div>
-<div class="guestconteiner">
-  <h1>Entrar como convidado?</h1>
-  <button routerLink="/start" class="botaologin guestbutton">Guest</button>
+  <div class="guestconteiner">
+    <h1>Entrar como convidado?</h1>
+    <button routerLink="/site" class="botaologin guestbutton">Guest</button>
+  </div>
 </div>

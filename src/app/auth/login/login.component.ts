@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl(null, [
       Validators.required,
-      Validators.minLength(8),
+      Validators.minLength(4),
     ]),
     remember_token: new FormControl(false),
   });
@@ -26,16 +26,17 @@ export class LoginComponent implements OnInit {
   error: any = {
     err: false,
     message: null,
+    title: null,
   };
 
   constructor(
-    public jwt: JwtService,
+    private jwt: JwtService,
     private router: Router,
     private data: DataService,
     private cookie: CookieService,
     private title: Title
   ) {
-    this.title.setTitle('Login');
+    this.title.setTitle('Entrar');
   }
 
   ngOnInit() {}
@@ -63,7 +64,7 @@ export class LoginComponent implements OnInit {
           this.error.title = 'EMAIL INVÁLIDO';
           this.error.message =
             'Não existe nenhúm utilizador no sistema registado com esse Email.';
-        } else if (e.message === 'INAVALID PASSWORD') {
+        } else if (e.message === 'INVALID PASSWORD') {
           this.error.title = 'SENHA INVÁLIDA';
           this.error.message = 'A senha introduzida não é válida.';
         } else if (e.message == 'USER NOT ACTIVE') {
@@ -73,7 +74,7 @@ export class LoginComponent implements OnInit {
         } else {
           this.error.title = 'ERRO INTERNO';
           this.error.message =
-            'Erro interno ao efectuar o login. Por favor verifique a sua liga; contacte o Administrador.';
+            'Erro interno ao efectuar o login. Por favor verifique a sua ligação. Contacte o Administrador.';
         }
       }
     );
