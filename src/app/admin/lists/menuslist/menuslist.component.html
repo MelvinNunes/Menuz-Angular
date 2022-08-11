@@ -1,58 +1,11 @@
-<!-- Title -->
-<section class="is-title-bar">
-  <div
-    class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0"
-  >
-    <ul>
-      <li>Admin</li>
-      <li>Dashboard</li>
-    </ul>
-    <a
-      href="https://github.com/justboil/admin-one-tailwind"
-      target="_blank"
-      class="button blue gap-2"
-    >
-      <span class="icon text-white">
-        <svg fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M17 13.5a1.5 1.5 0 0 0-1.5-1.5h-7A1.5 1.5 0 0 0 7 13.5v.5c0 1.971 1.86 4 5 4 3.14 0 5-2.029 5-4v-.5Zm-2.25-5.25a2.75 2.75 0 1 0-5.5 0 2.75 2.75 0 0 0 5.5 0ZM22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10Zm-1.5 0a8.5 8.5 0 1 0-17 0 8.5 8.5 0 0 0 17 0Z"
-            fill="#ffffff"
-            class="fill-212121"
-          ></path>
-        </svg>
-      </span>
-      <span>Meu Perfil</span>
-    </a>
-  </div>
-</section>
-<section class="is-hero-bar">
-  <div
-    class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0"
-  >
-    <h1 class="title">Dashboard</h1>
-  </div>
-</section>
-
-<!-- Cards -->
-<section class="section main-section">
-  <div class="grid gap-6 grid-cols-1 md:grid-cols-3 mb-6">
-    <app-clientscard></app-clientscard>
-    <app-salescard></app-salescard>
-    <app-itemscard></app-itemscard>
-  </div>
-
-  <div class="card mb-6">
-    <app-performancecard></app-performancecard>
-  </div>
-
-  <!-- Tables -->
+<div class="px-10">
   <div class="notification blue">
     <div
       class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0"
     >
       <div>
         <span class="icon"><i class="mdi mdi-buffer"></i></span>
-        <b>Tabela de Menus Registrados</b>
+        <b>Lista de Menus</b>
       </div>
     </div>
   </div>
@@ -70,6 +23,8 @@
           <th scope="col" class="py-3 px-6">Qtd itens</th>
           <th scope="col" class="py-3 px-6">Likes</th>
           <th scope="col" class="py-3 px-6">Localização</th>
+          <th scope="col" class="py-3 px-6">Data de Criação</th>
+          <th scope="col" class="py-3 px-6">Data de Atualização</th>
           <th scope="col" class="py-3 px-6">Activo</th>
         </tr>
       </thead>
@@ -88,8 +43,10 @@
           <td class="py-4 px-6">$2999</td>
           <td class="py-4 px-6">$2999</td>
           <td class="py-4 px-6">$2999</td>
+          <td class="py-4 px-6">$2999</td>
+          <td class="py-4 px-6">$2999</td>
         </tr>
       </tbody>
     </table>
   </div>
-</section>
+</div>

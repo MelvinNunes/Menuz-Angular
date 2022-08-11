@@ -12,7 +12,10 @@ import { SalescardComponent } from './home/cards/salescard/salescard.component';
 import { PerformancecardComponent } from './home/cards/performancecard/performancecard.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { ConfirmmodalComponent } from './components/modal/confirmmodal/confirmmodal.component';
-import { ClientspageComponent } from './clientspage/clientspage.component';
+import { ItemscardComponent } from './home/cards/itemscard/itemscard.component';
+import { UserlistComponent } from './lists/userlist/userlist.component';
+import { MenuslistComponent } from './lists/menuslist/menuslist.component';
+import { ItemslistComponent } from './lists/itemslist/itemslist.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { ClientspageComponent } from './clientspage/clientspage.component';
     PerformancecardComponent,
     ModalComponent,
     ConfirmmodalComponent,
-    ClientspageComponent,
+    ItemscardComponent,
+    UserlistComponent,
+    MenuslistComponent,
+    ItemslistComponent,
   ],
   imports: [
     CommonModule,

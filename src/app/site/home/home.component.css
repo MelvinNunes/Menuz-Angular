@@ -4,7 +4,14 @@
 }
 
 .imagemenu {
-    width: 600px;
+    width: 390px;
+    transform: rotate(-6deg);
+    transition: all 400ms;
+}
+
+.imagemenu:hover {
+    transition: all 400ms;
+    transform: scale(105%);
 }
 
 .cardbestitems {

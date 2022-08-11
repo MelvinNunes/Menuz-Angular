@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
-import { ClientspageComponent } from './clientspage/clientspage.component';
 import { HomeComponent } from './home/home.component';
+import { ItemslistComponent } from './lists/itemslist/itemslist.component';
+import { MenuslistComponent } from './lists/menuslist/menuslist.component';
+import { UserlistComponent } from './lists/userlist/userlist.component';
 
 const routes: Routes = [
   {
@@ -11,8 +13,10 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: 'home', component: HomeComponent },
+      { path: 'users', component: UserlistComponent },
+      { path: 'menus', component: MenuslistComponent },
+      { path: 'items', component: ItemslistComponent },
       { path: '**', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'clients', component: ClientspageComponent },
     ],
   },
 ];

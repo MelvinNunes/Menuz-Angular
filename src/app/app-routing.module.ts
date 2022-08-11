@@ -17,7 +17,6 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () =>
       import(`./admin/admin.module`).then((m) => m.AdminModule),
-    canActivate: [AuthGuard],
   },
   { path: '404', component: Error404Component },
   { path: '500', component: Error500Component },

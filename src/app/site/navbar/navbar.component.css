@@ -1,5 +1,5 @@
 .links {
-    @apply text-orange-400 font-semibold text-xl;
+    @apply text-orange-400 font-semibold text-xl hover:border-b-2 border-orange-500 transition-all;
 }
 
 .links:hover {
