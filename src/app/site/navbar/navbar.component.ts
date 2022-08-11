@@ -46,11 +46,12 @@ export class NavbarComponent implements OnInit {
     $('#login_modal').modal('hide');
   }
 
-  toHome(): void {
-    this.router.navigate(['home']);
-  }
 
   toLogin(): void {
     this.router.navigate(['auth/login']);
+  }
+
+  toLogon(): void {
+    this.router.navigate(['auth/logon'])
   }
 }

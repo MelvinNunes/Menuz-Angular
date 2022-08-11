@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
 
-  login() {
+  login(): void {
     this.jwt.login(this.form.value.email, this.form.value.password).subscribe(
       (res: any) => {
         this.jwt.setSession(res.access_token);

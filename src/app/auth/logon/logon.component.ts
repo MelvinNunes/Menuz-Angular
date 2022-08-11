@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { Constantes } from 'src/app/utils/constantes';
 import { CookieService } from 'src/app/utils/services/cookie.service';
 import { JwtService } from 'src/app/utils/services/jwt.service';
 import { RequestService } from 'src/app/utils/services/request.service';
@@ -50,9 +51,29 @@ export class LogonComponent implements OnInit {
       username: this.form.value.username,
       password: this.form.value.password,
     };
-    console.log(user);
     this.request.post('user/add', user).subscribe(
-      (res: any) => {},
+      (res: any) => {
+        this.jwt
+          .login(this.form.value.email, this.form.value.password)
+          .subscribe(
+            (res: any) => {
+              this.jwt.setSession(res.access_token);
+              if (this.form.value.remember_token) {
+                this.cookie.setCookie(
+                  Constantes.CNAME,
+                  JSON.stringify({
+                    email: this.form.value.email,
+                    password: this.form.value.password,
+                  }),
+                  365
+                );
+              }
+              this.data.setUser(this.jwt.getLoggedUtilizador());
+              this.router.navigate(['site']);
+            },
+            (e: any) => {}
+          );
+      },
       (e: any) => {
         this.error.err = true;
         if (e.message == 'NAME NULL') {
@@ -67,7 +88,7 @@ export class LogonComponent implements OnInit {
             'Por favor, o campo de passowrd não deve estar vazio.';
         } else {
           this.error.title = 'DUPLICATED USER';
-          this.error.message = 'O nome de usúario já existe.';
+          this.error.message = 'O usúario já existe.';
         }
       }
     );

@@ -9,7 +9,9 @@ import { SiteRoutingModule } from './site-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { ProductspageComponent } from './productspage/productspage.component';
+import { MymenuComponent } from './mymenu/mymenu.component';
+import { AllmenusComponent } from './allmenus/allmenus.component';
+import { AddmenuComponent } from './mymenu/addmenu/addmenu.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { ProductspageComponent } from './productspage/productspage.component';
     NavbarComponent,
     SiteComponent,
     FooterComponent,
-    ProductspageComponent,
+    MymenuComponent,
+    AllmenusComponent,
+    AddmenuComponent,
   ],
   imports: [
     CommonModule,

@@ -1,14 +1,15 @@
 .links {
-    @apply text-orange-400 font-semibold text-xl
+    @apply text-orange-400 font-semibold text-xl;
 }
 
 .links:hover {
     color: #ff4000;
 }
 
-.botaosearch {
-    margin-left: 220px;
+.links:focus {
+    color: #ff4000;
 }
+
 
 .button {
     @apply bg-gray-200 px-4 py-3 rounded-md
@@ -27,4 +28,10 @@
     box-shadow: 0px 0px 15px #ff4000;
     background-color: #ff4000;
     color: white;
+}
+
+@media (min-width: 1280px) {
+    .botaosearch {
+        margin-left: 220px;
+    }
 }

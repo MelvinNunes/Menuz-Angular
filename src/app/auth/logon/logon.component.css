@@ -1,0 +1,36 @@
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow-y: hidden;
+  }
+
+  .inputshadow {
+    width: 20em;
+    height: 3.3em;
+    margin-top: .4em;
+    border-radius: 4px;
+    border-color: rgba(255, 255, 255, 0.1);
+    padding: .1em .5em;
+    outline: none;
+    box-shadow: inset 0px 0px 4px rgba(126, 203, 255, 0.3);
+  }
+
+  .botaologon {
+    width: 8em;
+    height: 3em;
+    box-shadow: 0px 3px 8px #ff4000a9;;
+    border-radius: 6px;
+    border-color: #ff4000a9;
+    background-color: #ff4000a9;
+    cursor: pointer;
+  }
+
+  .botaologon:hover {
+    background-color: #ff4000;
+    color: white;
+  }
