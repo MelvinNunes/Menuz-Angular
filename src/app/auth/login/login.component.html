@@ -49,13 +49,13 @@
             <!-- Caso Erro na Password -->
             <div
               *ngIf="
-                !form.controls['password'].errors &&
+                form.controls['password'].errors &&
                 !form.controls['password'].pristine
               "
               style="padding-top: 10px"
             >
               <div
-                *ngIf="form.controls['password'].errors?.['required']"
+                *ngIf="!form.controls['password'].errors?.['required']"
                 style="font-size: 11.5px"
               >
                 <p style="color: red">
@@ -63,7 +63,7 @@
                 </p>
               </div>
               <div
-                *ngIf="form.controls['password'].errors?.['required'] || form.controls['password'].errors?.['minlength']"
+                *ngIf="!form.controls['password'].errors?.['required'] || !form.controls['password'].errors?.['minlength']"
                 style="font-size: 11.5px"
               >
                 <p style="color: red">

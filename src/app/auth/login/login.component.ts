@@ -43,22 +43,9 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     this.jwt.login(this.form.value.email, this.form.value.password).subscribe(
-      (res: any) => {
-        this.jwt.setSession(res.access_token);
-        if (this.form.value.remember_token) {
-          this.cookie.setCookie(
-            Constantes.CNAME,
-            JSON.stringify({
-              email: this.form.value.email,
-              password: this.form.value.password,
-            }),
-            365
-          );
-        }
-        this.data.setUser(this.jwt.getLoggedUtilizador());
-        this.router.navigate(['site']);
-      },
+      (res: any) => {},
       (e: any) => {
+        console.log(e);
         this.error.err = true;
         if (e.message == 'UNKNOWN USERNAME') {
           this.error.title = 'EMAIL INVÁLIDO';

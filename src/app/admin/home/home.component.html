@@ -37,12 +37,8 @@
 <section class="section main-section">
   <div class="grid gap-6 grid-cols-1 md:grid-cols-3 mb-6">
     <app-clientscard></app-clientscard>
-    <app-salescard></app-salescard>
+    <app-menu></app-menu>
     <app-itemscard></app-itemscard>
-  </div>
-
-  <div class="card mb-6">
-    <app-performancecard></app-performancecard>
   </div>
 
   <!-- Tables -->
@@ -76,18 +72,19 @@
       <tbody>
         <tr
           class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+          *ngFor="let menu of menus"
         >
           <th
             scope="row"
             class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
           >
-            Apple MacBook Pro 17"
+            {{ menu.name }}
           </th>
-          <td class="py-4 px-6">Sliver</td>
-          <td class="py-4 px-6">Laptop</td>
-          <td class="py-4 px-6">$2999</td>
-          <td class="py-4 px-6">$2999</td>
-          <td class="py-4 px-6">$2999</td>
+          <td class="py-4 px-6">{{ menu.description }}</td>
+          <td class="py-4 px-6">0</td>
+          <td class="py-4 px-6">{{ menu.hearts }}</td>
+          <td class="py-4 px-6">{{ menu.locations }}</td>
+          <td class="py-4 px-6">{{ menu.active === 1 ? "yes" : "no" }}</td>
         </tr>
       </tbody>
     </table>

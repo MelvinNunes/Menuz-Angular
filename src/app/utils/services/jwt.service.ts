@@ -1,4 +1,9 @@
-import { Constantes, ALLOWED_ROLES, ACCESS_TOKEN, REFRESH_TOKEN } from './../constantes';
+import {
+  Constantes,
+  ALLOWED_ROLES,
+  ACCESS_TOKEN,
+  REFRESH_TOKEN,
+} from './../constantes';
 import { CookieService } from './cookie.service';
 import { Injectable } from '@angular/core';
 import { RequestService } from './request.service';
@@ -6,37 +11,44 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class JwtService {
-
   constructor(
     private request: RequestService,
     private router: Router,
     private cookie: CookieService,
     public jwtHelper: JwtHelperService
-  ) { }
+  ) {}
 
   login(email: string, password: string) {
     localStorage.clear();
-    return this.request.post('auth/login', { username: email, password: password });
-  }
-
-  register(email: string, password: string) {
-    return this.request.post('auth/login', { email, password }).subscribe(() => {
-      this.login(email, password);
+    return this.request.post('auth/login', {
+      username: email,
+      password: password,
     });
   }
 
-  logout() {
-    this.request.post('auth/logout', {})
+  register(email: string, password: string) {
+    return this.request
+      .post('auth/login', { email, password })
       .subscribe(() => {
-        this.clear();
-      }, () => {
-        this.clear();
-      }, () => {
-        this.clear();
+        this.login(email, password);
       });
+  }
+
+  logout() {
+    this.request.post('auth/logout', {}).subscribe(
+      () => {
+        this.clear();
+      },
+      () => {
+        this.clear();
+      },
+      () => {
+        this.clear();
+      }
+    );
   }
 
   clear() {
@@ -44,7 +56,6 @@ export class JwtService {
     this.cookie.setCookie(Constantes.CNAME, null, 0);
     this.router.navigate(['login']);
   }
-
 
   loggedIn(): boolean {
     try {
@@ -62,7 +73,7 @@ export class JwtService {
 
   getLoggedUtilizador(): any {
     let f: any = localStorage.getItem(ACCESS_TOKEN);
-    console.log(f)
+    console.log(f);
     return this.jwtHelper.decodeToken(f);
   }
 
@@ -71,10 +82,10 @@ export class JwtService {
   }
 
   /* Check via module id if a user has acesso to model*/
-  hasAcess(module: any) {
+  hasAcess(role: any) {
     try {
-      for (const m of this.getLoggedUtilizador().acessos) {
-        if (m.role == module) {
+      for (const m of this.getLoggedUtilizador().typeUser) {
+        if (m.role == role) {
           return true;
         }
       }
@@ -128,7 +139,7 @@ export class JwtService {
   }
 
   assertAlive(decoded: any) {
-    const now = (Date.now().valueOf() / 1000);
+    const now = Date.now().valueOf() / 1000;
     if (typeof decoded.exp != 'undefined' && decoded.exp < now) {
       throw new Error(`token expired: ${JSON.stringify(decoded)}`);
     }
@@ -136,5 +147,4 @@ export class JwtService {
       throw new Error(`token expired: ${JSON.stringify(decoded)}`);
     }
   }
-
 }

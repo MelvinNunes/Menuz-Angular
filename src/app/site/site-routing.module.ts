@@ -14,8 +14,16 @@ const routes: Routes = [
     children: [
       { path: 'home', component: HomeComponent },
       { path: 'allmenus', component: AllmenusComponent },
-      { path: 'mymenus', component: MymenuComponent },
-      { path: 'addmenu', component: AddmenuComponent },
+      {
+        path: 'mymenus',
+        component: MymenuComponent,
+        //canActivate: [AuthGuard]
+      },
+      {
+        path: 'addmenu',
+        component: AddmenuComponent,
+        //canActivate: [AuthGuard],
+      },
       { path: '**', redirectTo: 'home', pathMatch: 'full' },
     ],
   },
